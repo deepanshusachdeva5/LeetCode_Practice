@@ -1,0 +1,38 @@
+class Solution:
+    def threeSumClosest(self, nums: List[int], target: int) -> int:
+        
+        nums.sort()
+        s = 0 # sum = 0
+        nearest = 0
+        
+        actual = float('inf')
+        for i in range(len(nums)-2):
+            
+            left = i+1
+            right = len(nums)-1
+            
+            while left < right:
+                
+                s = nums[i] + nums[left] + nums[right]
+                
+                if abs(target-s) < abs(target - actual):
+                    actual = s
+                    
+                
+                if s > target:
+                    right-=1
+                
+                else:
+                    left+=1
+                    
+        return actual
+                    
+                    
+        
+        
+            
+            
+            
+            
+            
+        return s
