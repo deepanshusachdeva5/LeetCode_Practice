@@ -1,0 +1,26 @@
+class Solution:
+    def multiply(self, num1: str, num2: str) -> str:
+        
+        
+        l1 = list(num1)
+        l2 = list(num2)
+        
+        # print(l1,l2)
+        asc1 = 0
+        c=1
+        for l in l1[::-1]:
+            temp = ord(l) - 48
+            asc1 += temp*c
+            c*=10
+            
+        asc2 = 0
+        c=1
+        for l in l2[::-1]:
+            temp = ord(l) - 48
+            asc2 += temp*c
+            c*=10
+            
+        # print(asc1,asc2)
+        return str(asc1*asc2)
+        
+            
