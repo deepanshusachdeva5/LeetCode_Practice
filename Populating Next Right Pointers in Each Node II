@@ -1,0 +1,115 @@
+"""
+# Definition for a Node.
+class Node:
+    def __init__(self, val: int = 0, left: 'Node' = None, right: 'Node' = None, next: 'Node' = None):
+        self.val = val
+        self.left = left
+        self.right = right
+        self.next = next
+"""
+
+class Solution:
+    def connect(self, root: 'Node') -> 'Node':
+        
+        if root is not None:
+            c= 2
+            queue = []
+            lst = []
+            queue.append([root,1])
+
+            while len(queue) > 0:
+
+                node = queue.pop(0)
+                lst.append(node)
+                # if(node!='null'):
+                nnodes =1
+                if node[0].left is not None:
+                    nnodes+=1
+                    queue.append([node[0].left,node[1]+1])
+
+                # else:
+                #     nnodes+=1
+                #     queue.append('null')
+
+                if node[0].right is not None:
+                    nnodes+=1
+                    queue.append([node[0].right,node[1]+1])
+
+                # else:
+                #     nnodes+=1
+                #     queue.append('null')
+
+                # if c- nnodes >0:
+                #     for i in range(c-nnodes):
+                #         queue.append('null')
+                            
+                # c=c*2
+                    
+                # else:
+                #     lst.append('null')
+                    
+
+            print(lst)
+            levels = {}
+            
+            for l in lst:
+                if l!='null':
+                    if l[1] in levels.keys():
+                        levels[l[1]].append(l[0])
+                    
+                    else:
+                        levels[l[1]] = [l[0]]
+                        
+            print(max(levels.keys()))
+                    
+            for k in range(1,max(levels.keys())+1):
+                # print(levels[k])
+                for l in range(len(levels[k])):
+                    if k ==1:
+                        levels[k][l].next=None
+                    else:
+                        
+                        if l < len(levels[k])-1:
+                            levels[k][l].next=levels[k][l+1]
+                        # elif l ==len(levels[k])-1:
+                        #     levels[k][l].next=None
+                
+            
+#             c= 1
+#             initial = 0
+#             levels =[]
+#             while c<=len(lst):
+#                 temp = lst[initial:initial +c]
+#                 initial = initial +c
+#                 c = c*2
+#                 levels.append(temp)
+
+#             for l in levels:
+#                 if len(l) == 1:
+#                     pass
+
+#                 else:
+
+#                     for n in range(len(l)):
+#                         if l[n]=='null':
+#                             pass
+#                         else:
+#                             if n == len(l)-1:
+#                                 pass
+
+#                             else:
+#                                 c= n+1
+#                                 while c!=len(l) and l[c]=='null':
+#                                     c+=1
+#                                 if c==len(l):
+#                                     pass
+
+#                                 else:
+#                                     l[n].next = l[c]
+
+#                                     # print(l[c],type(l[c]))
+        
+#         print(levels)
+        return root
+                
+        
