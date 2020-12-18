@@ -1,0 +1,32 @@
+class Solution:
+    def fourSumCount(self, A: List[int], B: List[int], C: List[int], D: List[int]) -> int:
+        # A.sort()
+        # B.sort()
+        # C.sort()
+        # D.sort()
+        # print(len(A),len(B),len(C),len(D))
+        ans = 0
+        # d={}
+        # for l in range(len(D)):
+        #     if D[l] not in d.keys():
+        #         d[D[l]] = [l]
+        #     else:
+        #         d[D[l]].append(l)
+        AB = {}
+        for i in range(len(A)):
+            for j in range(len(B)):
+                if (A[i]+B[j]) in AB.keys():
+                    AB[A[i]+B[j]]+=1
+                else:
+                    AB[(A[i]+B[j])] = 1
+        
+        
+        for k in range(len(C)):
+            for l in range(len(D)):
+                if -(C[k]+D[l]) in AB.keys():
+                    ans +=(AB[-(C[k]+D[l])])
+                    
+        
+            
+                
+        return ans
